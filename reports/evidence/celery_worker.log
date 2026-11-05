@@ -292,3 +292,26 @@ Trying again in 10.00 seconds... (5/100)
 
 
 worker: Warm shutdown (MainProcess)
+ 
+ -------------- celery@DESKTOP-MGOK18H v5.6.3 (recovery)
+--- ***** ----- 
+-- ******* ---- Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43 2026-11-05 10:36:15
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         vision_ai:0x7e02c140fd90
+- ** ---------- .> transport:   redis://:**@127.0.0.1:6379/2
+- ** ---------- .> results:     redis://127.0.0.1:6379/3
+- *** --- * --- .> concurrency: 1 (solo)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . ai.classify_job
+
+[2026-11-05 10:36:15,161: INFO/MainProcess] Connected to redis://:**@127.0.0.1:6379/2
+[2026-11-05 10:36:15,164: INFO/MainProcess] mingle: searching for neighbors
+[2026-11-05 10:36:16,174: INFO/MainProcess] mingle: all alone
+[2026-11-05 10:36:16,184: INFO/MainProcess] celery@DESKTOP-MGOK18H ready.

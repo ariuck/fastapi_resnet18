@@ -229,6 +229,8 @@ python -m training.finetune --data dataset --output artifacts/beans_resnet18 --e
 | **E7 Full + 증강** | **0.9850** | **131** | 0.9773 | 0.9778 | **1.0000** | 73.1 s |
 | E7 재현 (2회차) | 0.9850 | 131 | 0.9773 | 0.9778 | 1.0000 | 73.7 s |
 
+![실험 기록](evidence/exp_result.png)
+
 ### 7-5. 요인별 효과 (같은 학습 방식 안에서 비교)
 
 | 요인 | Head-only 10ep 기준 (E1 0.8947) | Full 기준 (E2 0.9699) |
@@ -274,6 +276,8 @@ python -m training.finetune --data dataset --output artifacts/beans_resnet18 --e
 |---|---:|---:|---:|---:|---:|
 | E0 기준선 (참고) | 0.7188 | 92 / 128 | 0.6977 | 0.5349 | 0.9286 |
 | **E7 최종** | **0.9766** | **125 / 128** | 0.9767 | 0.9535 | 1.0000 |
+
+![최종 Test 평가](evidence/final_test.png)
 
 - **Test 기준 +25.8%p** (92 → 125장). Test는 이 두 모델에만 1회 사용했으며, 모델·설정 선택에는 쓰지 않았다.
 - E7 Test 오답 3장: `angular_leaf_spot_test.14`→bean_rust, `bean_rust_test.15`→angular, `bean_rust_test.31`→angular. **남은 오류도 녹병 ↔ 반점병 혼동**이다.

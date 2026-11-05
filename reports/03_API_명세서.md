@@ -147,6 +147,10 @@ content-type: application/json
 | 브로커 연결 실패 (Redis 컨테이너 중지) | 503 | `{"detail":"작업 큐 등록 실패: Redis 연결을 확인하세요."}` — 생성된 job 15는 `failed`로 기록 | `evidence/redis_outage_test.txt` R-02, R-03 |
 | (참고) Redis 중지 중 동기 분류 | **200** | 캐시 없이 추론 결과 반환 (`cache_hit:false`) — 오류가 아니라 **대체 동작** | `evidence/redis_outage_test.txt` R-01 |
 
+| 동기 400 (Swagger) | 동기 413 (Swagger) | 헬스 체크 (Swagger) |
+|---|---|---|
+| ![동기 400](evidence/sync_400.png) | ![413](evidence/oversize_413.png) | ![health](evidence/health.png) |
+
 - 비동기 API에 잘못된 파일을 보내면 **큐 등록 전에 400으로 거절**되어 DB 행과 큐 메시지가 생기지 않는다 (테스트 후에도 `image_jobs` 14행 유지 확인).
 - Swagger의 `Undocumented` 표시는 오류 응답 예시를 라우터에 등록하지 않았다는 뜻이며, 응답 자체는 코드대로 반환되었다.
 
@@ -154,16 +158,16 @@ content-type: application/json
 
 | 검증 ID | 테스트 입력 | 실제 상태코드 | 첨부 증빙 |
 |---|---|---:|---|
-| API-01-T01 | `GET /health` | 200 | `functional_tests.txt` T-01 |
+| API-01-T01 | `GET /health` | 200 | `evidence/health.png` |
 | API-02-T01 | `bean_rust_test.26.jpg` | 200 | `evidence/ui_sync_correct.png` |
 | API-02-T02 | `bean_rust_test.10.jpg` | 200 | `evidence/ui_sync.png` |
-| API-02-T03 | `.txt` 파일 | 400 | `functional_tests.txt` T-07 |
-| API-02-T04 | 5MB 초과 파일 | 413 | `functional_tests.txt` T-07b |
+| API-02-T03 | `.txt` 파일 | 400 | `evidence/sync_400.png` |
+| API-02-T04 | 5MB 초과 파일 | 413 | `evidence/oversize_413.png` |
 | API-03-T01 | `bean_rust_test.30.jpg` | 202 | `evidence/ui_async.png` |
 | API-03-T02 | `README.md` | 400 | `evidence/bad_image.png` |
-| API-03-T03 | Redis 중지 후 `angular_leaf_spot_test.40.jpg` | 503 | `evidence/redis_outage_test.txt` |
-| API-02-T05 | Redis 중지 후 `healthy_test.40.jpg` | 200 (캐시 대체) | `evidence/redis_outage_test.txt` |
-| API-04-T03 | 503으로 끝난 `job_id=15` | 200 (`failed`) | `evidence/redis_outage_test.txt` |
+| API-03-T03 | Redis 중지 후 `angular_leaf_spot_test.40.jpg` | 503 | `evidence/redis_outage.png` |
+| API-02-T05 | Redis 중지 후 `healthy_test.40.jpg` | 200 (캐시 대체) | `evidence/redis_outage.png` |
+| API-04-T03 | 503으로 끝난 `job_id=15` | 200 (`failed`) | `evidence/redis_outage.png`, `evidence/db_failed_row.png` |
 | API-04-T01 | 접수된 `job_id=14` | 200 (`done`) | `evidence/ui_async.png` |
 | API-04-T02 | 없는 `job_id=999999` | 404 | `evidence/api_404.png` |
 | WEB-01/02 | `/vision/sync/`, `/vision/async/`, `/docs` | 200 | `functional_tests.txt` |

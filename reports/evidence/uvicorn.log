@@ -157,3 +157,18 @@ INFO:     Shutting down
 INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
 INFO:     Finished server process [26920]
+INFO:     Started server process [40446]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:34618 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34622 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35748 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35748 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35748 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35748 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35748 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35748 - "POST /api/sync/classify/ HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:35748 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35748 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35748 - "POST /api/sync/classify/ HTTP/1.1" 413 Request Entity Too Large
