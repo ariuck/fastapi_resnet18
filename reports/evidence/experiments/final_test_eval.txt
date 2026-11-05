@@ -1,0 +1,12 @@
+[E7_full3_aug] artifacts/exp/E7_full3_aug on dataset/test: 125/128 = 0.9766
+  정답/예측                 angular_le   bean_rust     healthy   class_acc
+  angular_leaf_spot             42           1           0   0.9767
+  bean_rust                      2          41           0   0.9535
+  healthy                        0           0          42   1.0000
+  오답 3건 margin 중앙값: 0.4085 / 정답 margin 중앙값: 0.9939
+[E0] artifacts/beans_resnet18 on dataset/test: 92/128 = 0.7188
+  정답/예측                 angular_le   bean_rust     healthy   class_acc
+  angular_leaf_spot             30           7           6   0.6977
+  bean_rust                     13          23           7   0.5349
+  healthy                        0           3          39   0.9286
+  오답 36건 margin 중앙값: 0.0937 / 정답 margin 중앙값: 0.3463

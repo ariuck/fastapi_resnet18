@@ -1,0 +1,22 @@
+# 실행환경 (2026-11-04 11:09:47 KST)
+Host OS      : Windows 11 Pro 10.0.26200 + WSL2
+WSL distro   : Ubuntu 26.04.1 LTS / kernel 6.18.54.1-microsoft-standard-WSL2
+CPU          : 12th Gen Intel(R) Core(TM) i7-12700 (20 logical cores visible to WSL)
+RAM (WSL)    : 15Gi
+GPU          : NVIDIA GeForce RTX 3060, 12288 MiB, 610.88
+Python       : Python 3.11.18 (.venv, uv)
+torch        : 2.15.0+cu132 (cuda available=True)
+torchvision  : 0.29.2+cu132
+transformers : 4.57.6
+fastapi      : 0.162.0 / uvicorn 0.54.0
+celery       : 5.6.3 / redis-py 6.4.0
+sqlalchemy   : 2.1.7 / psycopg 3.3.7
+Docker       : 29.9.2 / compose 5.6.1
+Containers   :
+postgres  postgres:17-alpine  Up 2 minutes (healthy)  127.0.0.1:5432->5432/tcp
+redis  redis:7.4-alpine  Up 2 minutes (healthy)  127.0.0.1:6379->6379/tcp
+Processes    :
+  26920 python /home/user1/fastapi_resnet18/.venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000
+  27861 python /home/user1/fastapi_resnet18/.venv/bin/celery -A ai.celery_app:celery_app worker --loglevel=info --pool=solo --concurrency=1
+MODEL_PATH   : artifacts/beans_resnet18
+추론 장치     : ai/hf_model.py pipeline(device=-1) → FastAPI·Worker 추론은 CPU (학습만 GPU)

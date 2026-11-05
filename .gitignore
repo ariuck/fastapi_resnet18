@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+dataset/
+# [추가] 정확도 개선 실험용 전처리·증강 데이터
+dataset_*/
+artifacts/*
+!artifacts/.gitkeep
+media/jobs/*
+!media/jobs/.gitkeep
+*.db

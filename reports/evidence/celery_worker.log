@@ -1,0 +1,294 @@
+ 
+ -------------- celery@DESKTOP-MGOK18H v5.6.3 (recovery)
+--- ***** ----- 
+-- ******* ---- Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43 2026-11-04 11:07:38
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         vision_ai:0x7e793372a390
+- ** ---------- .> transport:   redis://:**@127.0.0.1:6379/2
+- ** ---------- .> results:     redis://127.0.0.1:6379/3
+- *** --- * --- .> concurrency: 1 (solo)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . ai.classify_job
+
+[2026-11-04 11:07:38,330: INFO/MainProcess] Connected to redis://:**@127.0.0.1:6379/2
+[2026-11-04 11:07:38,332: INFO/MainProcess] mingle: searching for neighbors
+[2026-11-04 11:07:39,341: INFO/MainProcess] mingle: all alone
+[2026-11-04 11:07:39,351: INFO/MainProcess] celery@DESKTOP-MGOK18H ready.
+[2026-11-04 11:08:36,736: INFO/MainProcess] Task ai.classify_job[f4a18517-383c-4f56-a365-143258c25b10] received
+[2026-11-04 11:08:42,382: INFO/MainProcess] Task ai.classify_job[f4a18517-383c-4f56-a365-143258c25b10] succeeded in 5.645983930000057s: {'job_id': 1, 'status': 'done'}
+[2026-11-04 11:08:42,433: INFO/MainProcess] Task ai.classify_job[38a7e18d-71a5-4297-af97-97ef29b9fabd] received
+[2026-11-04 11:08:42,461: INFO/MainProcess] Task ai.classify_job[38a7e18d-71a5-4297-af97-97ef29b9fabd] succeeded in 0.027964380999947025s: {'job_id': 2, 'status': 'done'}
+[2026-11-04 11:08:42,547: INFO/MainProcess] Task ai.classify_job[35196933-7622-4471-9c30-e0606300f190] received
+[2026-11-04 11:08:42,577: INFO/MainProcess] Task ai.classify_job[35196933-7622-4471-9c30-e0606300f190] succeeded in 0.029720647999965877s: {'job_id': 3, 'status': 'done'}
+[2026-11-04 11:08:42,662: INFO/MainProcess] Task ai.classify_job[684fe7cc-7760-4048-bc07-c3784cd08ca6] received
+[2026-11-04 11:08:42,697: INFO/MainProcess] Task ai.classify_job[684fe7cc-7760-4048-bc07-c3784cd08ca6] succeeded in 0.03432733699992241s: {'job_id': 4, 'status': 'done'}
+[2026-11-04 11:08:42,780: INFO/MainProcess] Task ai.classify_job[6cb03504-c1e1-4183-a2eb-230e8bb577bf] received
+[2026-11-04 11:08:42,812: INFO/MainProcess] Task ai.classify_job[6cb03504-c1e1-4183-a2eb-230e8bb577bf] succeeded in 0.03164282399984586s: {'job_id': 5, 'status': 'done'}
+[2026-11-04 11:08:42,897: INFO/MainProcess] Task ai.classify_job[8eb42077-ac28-49c0-b23c-32ffc6b873b9] received
+[2026-11-04 11:08:42,904: INFO/MainProcess] Task ai.classify_job[8eb42077-ac28-49c0-b23c-32ffc6b873b9] succeeded in 0.006386537000253156s: {'job_id': 6, 'status': 'done'}
+[2026-11-04 11:08:43,011: INFO/MainProcess] Task ai.classify_job[bbe3855e-d2d9-49c2-a471-dc6e194c5498] received
+[2026-11-04 11:08:43,017: INFO/MainProcess] Task ai.classify_job[bbe3855e-d2d9-49c2-a471-dc6e194c5498] succeeded in 0.005797534999601339s: {'job_id': 7, 'status': 'done'}
+[2026-11-04 11:08:43,130: INFO/MainProcess] Task ai.classify_job[aaeef929-04fd-4f68-a956-7c4964084aea] received
+[2026-11-04 11:08:43,136: INFO/MainProcess] Task ai.classify_job[aaeef929-04fd-4f68-a956-7c4964084aea] succeeded in 0.00551332499981072s: {'job_id': 8, 'status': 'done'}
+[2026-11-04 11:08:43,249: INFO/MainProcess] Task ai.classify_job[014ce35e-8756-40b8-8223-9167e2d0dded] received
+[2026-11-04 11:08:43,255: INFO/MainProcess] Task ai.classify_job[014ce35e-8756-40b8-8223-9167e2d0dded] succeeded in 0.005322564999914903s: {'job_id': 9, 'status': 'done'}
+[2026-11-04 11:08:43,368: INFO/MainProcess] Task ai.classify_job[d8afcde8-537a-49fd-b8d0-1cabc51b25c9] received
+[2026-11-04 11:08:43,374: INFO/MainProcess] Task ai.classify_job[d8afcde8-537a-49fd-b8d0-1cabc51b25c9] succeeded in 0.0054752490000282705s: {'job_id': 10, 'status': 'done'}
+[2026-11-04 11:09:10,586: INFO/MainProcess] Task ai.classify_job[37cb95ad-2b0b-45db-9b7f-2bca3b9ae600] received
+[2026-11-04 11:09:10,593: INFO/MainProcess] Task ai.classify_job[37cb95ad-2b0b-45db-9b7f-2bca3b9ae600] succeeded in 0.006588735000150336s: {'job_id': 11, 'status': 'done'}
+
+worker: Warm shutdown (MainProcess)
+ 
+ -------------- celery@DESKTOP-MGOK18H v5.6.3 (recovery)
+--- ***** ----- 
+-- ******* ---- Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43 2026-11-04 11:09:22
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         vision_ai:0x776b39cc2ad0
+- ** ---------- .> transport:   redis://:**@127.0.0.1:6379/2
+- ** ---------- .> results:     redis://127.0.0.1:6379/3
+- *** --- * --- .> concurrency: 1 (solo)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+[tasks]
+  . ai.classify_job
+
+[2026-11-04 11:09:22,460: INFO/MainProcess] Connected to redis://:**@127.0.0.1:6379/2
+[2026-11-04 11:09:22,462: INFO/MainProcess] mingle: searching for neighbors
+[2026-11-04 11:09:23,469: INFO/MainProcess] mingle: all alone
+[2026-11-04 11:09:23,481: INFO/MainProcess] celery@DESKTOP-MGOK18H ready.
+[2026-11-04 11:09:23,484: INFO/MainProcess] Task ai.classify_job[c31bc014-df9f-4f20-aaed-d12ce47d4eec] received
+[2026-11-04 11:09:29,087: INFO/MainProcess] Task ai.classify_job[c31bc014-df9f-4f20-aaed-d12ce47d4eec] succeeded in 5.60364071999993s: {'job_id': 12, 'status': 'done'}
+[2026-11-04 11:58:16,722: INFO/MainProcess] Task ai.classify_job[b097244e-ee58-4105-857b-83caf217eab3] received
+[2026-11-04 11:58:16,777: INFO/MainProcess] Task ai.classify_job[b097244e-ee58-4105-857b-83caf217eab3] succeeded in 0.05135020799934864s: {'job_id': 13, 'status': 'done'}
+[2026-11-04 11:59:33,929: INFO/MainProcess] Task ai.classify_job[18451457-c05b-4397-b5f3-28dcf4c9cd2d] received
+[2026-11-04 11:59:34,013: INFO/MainProcess] Task ai.classify_job[18451457-c05b-4397-b5f3-28dcf4c9cd2d] succeeded in 0.08297027800017531s: {'job_id': 14, 'status': 'done'}
+[2026-11-04 12:52:53,996: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/retry.py", line 105, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/client.py", line 915, in <lambda>
+    lambda: command(*args, **kwargs),
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/client.py", line 936, in try_read
+    return conn.read_response(disconnect_on_error=False, push_request=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/connection.py", line 650, in read_response
+    response = self._parser.read_response(disable_decoding=disable_decoding)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/_parsers/resp2.py", line 15, in read_response
+    result = self._read_response(disable_decoding=disable_decoding)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/_parsers/resp2.py", line 25, in _read_response
+    raw = self._buffer.readline()
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/_parsers/socket.py", line 115, in readline
+    self._read_from_socket()
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/_parsers/socket.py", line 68, in _read_from_socket
+    raise ConnectionError(SERVER_CLOSED_CONNECTION_ERROR)
+redis.exceptions.ConnectionError: Connection closed by server.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/connection.py", line 650, in read_response
+    response = self._parser.read_response(disable_decoding=disable_decoding)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/_parsers/resp2.py", line 15, in read_response
+    result = self._read_response(disable_decoding=disable_decoding)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/_parsers/resp2.py", line 25, in _read_response
+    raw = self._buffer.readline()
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/_parsers/socket.py", line 115, in readline
+    self._read_from_socket()
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/_parsers/socket.py", line 65, in _read_from_socket
+    data = self._sock.recv(socket_read_size)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/celery/worker/consumer/consumer.py", line 346, in start
+    blueprint.start(self)
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/celery/bootsteps.py", line 116, in start
+    step.start(parent)
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/celery/worker/consumer/consumer.py", line 788, in start
+    c.loop(*c.loop_args())
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/celery/worker/loops.py", line 97, in asynloop
+    next(loop)
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/kombu/asynchronous/hub.py", line 465, in create_loop
+    cb(*cbargs)
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/kombu/transport/redis.py", line 2250, in on_readable
+    self.cycle.on_readable(fileno)
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/kombu/transport/redis.py", line 863, in on_readable
+    chan.handlers[type]()
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/kombu/transport/redis.py", line 1421, in _receive
+    ret.append(self._receive_one(c))
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/kombu/transport/redis.py", line 1431, in _receive_one
+    response = c.parse_response()
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/client.py", line 938, in parse_response
+    response = self._execute(conn, try_read)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/client.py", line 914, in _execute
+    return conn.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/retry.py", line 108, in call_with_retry
+    fail(error)
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/client.py", line 916, in <lambda>
+    lambda _: self._reconnect(conn),
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/client.py", line 904, in _reconnect
+    conn.connect()
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/connection.py", line 380, in connect
+    self.connect_check_health(check_health=True)
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/connection.py", line 403, in connect_check_health
+    self.on_connect_check_health(check_health=check_health)
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/connection.py", line 523, in on_connect_check_health
+    self.read_response()
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/connection.py", line 658, in read_response
+    raise ConnectionError(f"Error while reading from {host_error} : {e.args}")
+redis.exceptions.ConnectionError: Error while reading from 127.0.0.1:6379 : (104, 'Connection reset by peer')
+[2026-11-04 12:52:54,019: WARNING/MainProcess] /home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/celery/worker/consumer/consumer.py:397: CPendingDeprecationWarning: 
+In Celery 5.1 we introduced an optional breaking change which
+on connection loss cancels all currently executed tasks with late acknowledgement enabled.
+These tasks cannot be acknowledged as the connection is gone, and the tasks are automatically redelivered
+back to the queue. You can enable this behavior using the worker_cancel_long_running_tasks_on_connection_loss
+setting. In Celery 5.1 it is set to False by default. The setting will be set to True by default in Celery 6.0.
+
+  warnings.warn(CANCEL_TASKS_BY_DEFAULT, CPendingDeprecationWarning)
+
+[2026-11-04 12:52:54,035: ERROR/MainProcess] consumer: Cannot connect to redis://:**@127.0.0.1:6379/2: Error while reading from 127.0.0.1:6379 : (104, 'Connection reset by peer').
+Trying again in 2.00 seconds... (1/100)
+
+[2026-11-04 12:52:56,043: INFO/MainProcess] Connected to redis://:**@127.0.0.1:6379/2
+[2026-11-04 12:52:56,054: INFO/MainProcess] mingle: searching for neighbors
+[2026-11-04 12:52:57,068: INFO/MainProcess] mingle: all alone
+[2026-11-04 12:53:00,891: INFO/MainProcess] Task ai.classify_job[068915f5-bc72-4544-8b04-5aadf854dc2c] received
+[2026-11-04 12:53:01,029: INFO/MainProcess] Task ai.classify_job[068915f5-bc72-4544-8b04-5aadf854dc2c] succeeded in 0.13633785799902398s: {'job_id': 16, 'status': 'done'}
+[2026-11-04 12:56:51,529: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/retry.py", line 105, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/client.py", line 915, in <lambda>
+    lambda: command(*args, **kwargs),
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/client.py", line 936, in try_read
+    return conn.read_response(disconnect_on_error=False, push_request=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/connection.py", line 650, in read_response
+    response = self._parser.read_response(disable_decoding=disable_decoding)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/_parsers/resp2.py", line 15, in read_response
+    result = self._read_response(disable_decoding=disable_decoding)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/_parsers/resp2.py", line 25, in _read_response
+    raw = self._buffer.readline()
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/_parsers/socket.py", line 115, in readline
+    self._read_from_socket()
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/_parsers/socket.py", line 68, in _read_from_socket
+    raise ConnectionError(SERVER_CLOSED_CONNECTION_ERROR)
+redis.exceptions.ConnectionError: Connection closed by server.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/connection.py", line 389, in connect_check_health
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/retry.py", line 105, in call_with_retry
+    return do()
+           ^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/connection.py", line 390, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/connection.py", line 803, in _connect
+    raise err
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/connection.py", line 787, in _connect
+    sock.connect(socket_address)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/celery/worker/consumer/consumer.py", line 346, in start
+    blueprint.start(self)
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/celery/bootsteps.py", line 116, in start
+    step.start(parent)
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/celery/worker/consumer/consumer.py", line 788, in start
+    c.loop(*c.loop_args())
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/celery/worker/loops.py", line 97, in asynloop
+    next(loop)
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/kombu/asynchronous/hub.py", line 465, in create_loop
+    cb(*cbargs)
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/kombu/transport/redis.py", line 2250, in on_readable
+    self.cycle.on_readable(fileno)
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/kombu/transport/redis.py", line 863, in on_readable
+    chan.handlers[type]()
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/kombu/transport/redis.py", line 1421, in _receive
+    ret.append(self._receive_one(c))
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/kombu/transport/redis.py", line 1431, in _receive_one
+    response = c.parse_response()
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/client.py", line 938, in parse_response
+    response = self._execute(conn, try_read)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/client.py", line 914, in _execute
+    return conn.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/retry.py", line 108, in call_with_retry
+    fail(error)
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/client.py", line 916, in <lambda>
+    lambda _: self._reconnect(conn),
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/client.py", line 904, in _reconnect
+    conn.connect()
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/connection.py", line 380, in connect
+    self.connect_check_health(check_health=True)
+  File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/connection.py", line 397, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 104 connecting to 127.0.0.1:6379. Connection reset by peer.
+[2026-11-04 12:56:51,531: WARNING/MainProcess] /home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/celery/worker/consumer/consumer.py:397: CPendingDeprecationWarning: 
+In Celery 5.1 we introduced an optional breaking change which
+on connection loss cancels all currently executed tasks with late acknowledgement enabled.
+These tasks cannot be acknowledged as the connection is gone, and the tasks are automatically redelivered
+back to the queue. You can enable this behavior using the worker_cancel_long_running_tasks_on_connection_loss
+setting. In Celery 5.1 it is set to False by default. The setting will be set to True by default in Celery 6.0.
+
+  warnings.warn(CANCEL_TASKS_BY_DEFAULT, CPendingDeprecationWarning)
+
+[2026-11-04 12:56:51,533: ERROR/MainProcess] consumer: Cannot connect to redis://:**@127.0.0.1:6379/2: Error 111 connecting to 127.0.0.1:6379. Connection refused..
+Trying again in 2.00 seconds... (1/100)
+
+[2026-11-04 12:56:53,535: ERROR/MainProcess] consumer: Cannot connect to redis://:**@127.0.0.1:6379/2: Error 111 connecting to 127.0.0.1:6379. Connection refused..
+Trying again in 4.00 seconds... (2/100)
+
+[2026-11-04 12:56:57,536: ERROR/MainProcess] consumer: Cannot connect to redis://:**@127.0.0.1:6379/2: Error 111 connecting to 127.0.0.1:6379. Connection refused..
+Trying again in 6.00 seconds... (3/100)
+
+[2026-11-04 12:57:03,538: ERROR/MainProcess] consumer: Cannot connect to redis://:**@127.0.0.1:6379/2: Error 111 connecting to 127.0.0.1:6379. Connection refused..
+Trying again in 8.00 seconds... (4/100)
+
+[2026-11-04 12:57:11,541: ERROR/MainProcess] consumer: Cannot connect to redis://:**@127.0.0.1:6379/2: Error 111 connecting to 127.0.0.1:6379. Connection refused..
+Trying again in 10.00 seconds... (5/100)
+
+
+worker: Warm shutdown (MainProcess)

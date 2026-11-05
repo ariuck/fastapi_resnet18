@@ -1,0 +1,7 @@
+특징 클래스별 평균 (train)
+  angular_leaf_spot  leaf_ratio=0.646 brown_ratio=0.087 yellow_ratio=0.172 spot_count=93.345 spot_mean_area=0.004 h_mean=39.516 s_mean=146.669 v_mean=156.687 h_std=12.218 s_std=44.561 v_std=44.626
+  bean_rust          leaf_ratio=0.550 brown_ratio=0.068 yellow_ratio=0.081 spot_count=76.216 spot_mean_area=0.002 h_mean=43.332 s_mean=127.483 v_mean=143.999 h_std=13.159 s_std=41.453 v_std=43.455
+  healthy            leaf_ratio=0.768 brown_ratio=0.037 yellow_ratio=0.048 spot_count=53.657 spot_mean_area=0.001 h_mean=48.793 s_mean=127.472 v_mean=157.550 h_std=11.909 s_std=47.841 v_std=42.705
+[R1_opencv_logreg] val 88/133 = 0.6617 class_acc=[0.5, 0.6222, 0.8636] cm=[[22, 14, 8], [14, 28, 3], [1, 5, 38]]
+[R2_opencv_rf] val 103/133 = 0.7744 class_acc=[0.6591, 0.8, 0.8636] cm=[[29, 7, 8], [7, 36, 2], [1, 5, 38]]
+  RF 특징 중요도: leaf_ratio 0.133, h_mean 0.129, yellow_ratio 0.106, v_mean 0.102, spot_count 0.099, s_std 0.090, s_mean 0.073, brown_ratio 0.073, h_std 0.071, spot_mean_area 0.067, v_std 0.056

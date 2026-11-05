@@ -1,0 +1,15 @@
+$ python -m training.finetune --data dataset_clahe --output artifacts/exp/E3_head10_clahe --epochs 10 --batch-size 8 --freeze-backbone
+# started: 2026-11-05 09:20:22 KST
+클래스: ['angular_leaf_spot', 'bean_rust', 'healthy'] / Train: 1034, Val: 133
+{'epoch': 1, 'loss': 1.0059, 'val_accuracy': 0.6992}
+{'epoch': 2, 'loss': 0.8202, 'val_accuracy': 0.7594}
+{'epoch': 3, 'loss': 0.7129, 'val_accuracy': 0.7744}
+{'epoch': 4, 'loss': 0.6499, 'val_accuracy': 0.8346}
+{'epoch': 5, 'loss': 0.6132, 'val_accuracy': 0.8496}
+{'epoch': 6, 'loss': 0.5692, 'val_accuracy': 0.8722}
+{'epoch': 7, 'loss': 0.5659, 'val_accuracy': 0.8722}
+{'epoch': 8, 'loss': 0.5143, 'val_accuracy': 0.8797}
+{'epoch': 9, 'loss': 0.5283, 'val_accuracy': 0.8722}
+{'epoch': 10, 'loss': 0.5098, 'val_accuracy': 0.8872}
+저장 완료: artifacts/exp/E3_head10_clahe / best val accuracy=0.8872
+# elapsed: 142.95 s

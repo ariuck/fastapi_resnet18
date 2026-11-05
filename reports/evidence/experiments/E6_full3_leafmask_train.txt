@@ -1,0 +1,8 @@
+$ python -m training.finetune --data dataset_leafmask --output artifacts/exp/E6_full3_leafmask --epochs 3 --batch-size 8 --lr 0.00005
+# started: 2026-11-05 09:25:49 KST
+클래스: ['angular_leaf_spot', 'bean_rust', 'healthy'] / Train: 1034, Val: 133
+{'epoch': 1, 'loss': 0.4573, 'val_accuracy': 0.9323}
+{'epoch': 2, 'loss': 0.1565, 'val_accuracy': 0.9549}
+{'epoch': 3, 'loss': 0.0962, 'val_accuracy': 0.9323}
+저장 완료: artifacts/exp/E6_full3_leafmask / best val accuracy=0.9549
+# elapsed: 40.21 s

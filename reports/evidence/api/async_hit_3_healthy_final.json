@@ -1,0 +1,26 @@
+{
+  "job_id": 8,
+  "status": "done",
+  "model_id": "artifacts/beans_resnet18",
+  "top1": {
+    "label": "bean_rust",
+    "score": 0.49997395277023315
+  },
+  "all": [
+    {
+      "label": "bean_rust",
+      "score": 0.49997395277023315
+    },
+    {
+      "label": "healthy",
+      "score": 0.32026687264442444
+    },
+    {
+      "label": "angular_leaf_spot",
+      "score": 0.17975914478302002
+    }
+  ],
+  "inference_ms": null,
+  "cache_hit": true,
+  "error_message": null
+}

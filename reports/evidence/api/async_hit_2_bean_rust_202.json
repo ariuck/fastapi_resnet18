@@ -1,0 +1,5 @@
+{
+  "job_id": 7,
+  "status": "queued",
+  "check_url": "/api/async/jobs/7/"
+}

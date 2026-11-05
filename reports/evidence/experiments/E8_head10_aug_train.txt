@@ -1,0 +1,15 @@
+$ python -m training.finetune --data dataset_aug --output artifacts/exp/E8_head10_aug --epochs 10 --batch-size 8 --freeze-backbone
+# started: 2026-11-05 09:28:03 KST
+클래스: ['angular_leaf_spot', 'bean_rust', 'healthy'] / Train: 3102, Val: 133
+{'epoch': 1, 'loss': 0.8612, 'val_accuracy': 0.782}
+{'epoch': 2, 'loss': 0.6473, 'val_accuracy': 0.8647}
+{'epoch': 3, 'loss': 0.5679, 'val_accuracy': 0.8571}
+{'epoch': 4, 'loss': 0.5152, 'val_accuracy': 0.8797}
+{'epoch': 5, 'loss': 0.4764, 'val_accuracy': 0.9173}
+{'epoch': 6, 'loss': 0.4668, 'val_accuracy': 0.9248}
+{'epoch': 7, 'loss': 0.4405, 'val_accuracy': 0.9023}
+{'epoch': 8, 'loss': 0.4366, 'val_accuracy': 0.9323}
+{'epoch': 9, 'loss': 0.4169, 'val_accuracy': 0.9098}
+{'epoch': 10, 'loss': 0.4243, 'val_accuracy': 0.9323}
+저장 완료: artifacts/exp/E8_head10_aug / best val accuracy=0.9323
+# elapsed: 221.96 s

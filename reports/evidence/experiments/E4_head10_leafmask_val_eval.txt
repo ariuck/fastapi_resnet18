@@ -1,0 +1,6 @@
+[E4_head10_leafmask] artifacts/exp/E4_head10_leafmask on dataset_leafmask/val: 125/133 = 0.9398
+  정답/예측                 angular_le   bean_rust     healthy   class_acc
+  angular_leaf_spot             42           1           1   0.9545
+  bean_rust                      3          41           1   0.9111
+  healthy                        0           2          42   0.9545
+  오답 8건 margin 중앙값: 0.2818 / 정답 margin 중앙값: 0.6475

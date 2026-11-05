@@ -1,0 +1,6 @@
+[E3_head10_clahe] artifacts/exp/E3_head10_clahe on dataset_clahe/val: 118/133 = 0.8872
+  정답/예측                 angular_le   bean_rust     healthy   class_acc
+  angular_leaf_spot             41           2           1   0.9318
+  bean_rust                      6          38           1   0.8444
+  healthy                        1           4          39   0.8864
+  오답 15건 margin 중앙값: 0.3347 / 정답 margin 중앙값: 0.6674

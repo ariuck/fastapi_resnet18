@@ -1,0 +1,8 @@
+$ python -m training.finetune --data dataset_aug --output artifacts/exp/E7_full3_aug --epochs 3 --batch-size 8 --lr 0.00005
+# started: 2026-11-05 09:26:42 KST
+클래스: ['angular_leaf_spot', 'bean_rust', 'healthy'] / Train: 3102, Val: 133
+{'epoch': 1, 'loss': 0.3103, 'val_accuracy': 0.9398}
+{'epoch': 2, 'loss': 0.1091, 'val_accuracy': 0.9699}
+{'epoch': 3, 'loss': 0.0691, 'val_accuracy': 0.985}
+저장 완료: artifacts/exp/E7_full3_aug / best val accuracy=0.9850
+# elapsed: 73.12 s

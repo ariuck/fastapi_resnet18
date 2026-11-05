@@ -1,0 +1,88 @@
+# 실행 시각: 2026-11-04 11:09:10 KST / MODEL_PATH=MODEL_PATH=artifacts/beans_resnet18
+
+[T-01] GET /health
+  HTTP 200 | {"status":"ok"}
+[WEB]  GET /vision/sync/ /vision/async/ /docs
+  /vision/sync/ -> 200
+  /vision/async/ -> 200
+  /docs -> 200
+
+[T-02] 동기 추론: dataset/test/healthy/healthy_test.26.jpg
+  HTTP 200 | {"model_id":"artifacts/beans_resnet18","top1":{"label":"healthy","score":0.8983675837516785},"all":[{"label":"healthy","score":0.8983675837516785},{"label":"bean_rust","score":0.05453498661518097},{"label":"angular_leaf_spot","score":0.04709747061133385}],"inference_ms":18.42,"cache_hit":false}
+[T-09] 같은 파일 재요청 (캐시)
+  HTTP 200 | {"model_id":"artifacts/beans_resnet18","top1":{"label":"healthy","score":0.8983675837516785},"all":[{"label":"healthy","score":0.8983675837516785},{"label":"bean_rust","score":0.05453498661518097},{"label":"angular_leaf_spot","score":0.04709747061133385}],"inference_ms":null,"cache_hit":true}
+
+[T-03] 비동기 접수: dataset/test/healthy/healthy_test.26.jpg
+  HTTP 202
+  HTTP/1.1 202 Accepted
+  content-type: application/json
+  {"job_id":11,"status":"queued","check_url":"/api/async/jobs/11/"}
+[T-04] GET /api/async/jobs/11/
+  HTTP 200 | {"job_id":11,"status":"done","model_id":"artifacts/beans_resnet18","top1":{"label":"healthy","score":0.8983675837516785},"all":[{"label":"healthy","score":0.8983675837516785},{"label":"bean_rust","score":0.05453498661518097},{"label":"angular_leaf_spot","score":0.04709747061133385}],"inference_ms":null,"cache_hit":true,"error_message":null}
+
+[T-05] redis-cli ping: PONG
+       Redis DB별 키 수: db1:keys=12,expires=12,avg_ttl=576538,subexpiry=0 db2:keys=5,expires=0,avg_ttl=0,subexpiry=0 db3:keys=11,expires=11,avg_ttl=86378883,subexpiry=0 
+
+[T-07] 불량 입력 (.txt)
+  HTTP 400 | {"detail":"올바른 이미지 파일이 아닙니다."}
+  (async)
+  HTTP 400 | {"detail":"올바른 이미지 파일이 아닙니다."}
+[T-07b] 5MB 초과
+  HTTP 413 | {"detail":"5MB 이하 파일만 허용합니다."}
+[T-08] 없는 작업번호 999999
+  HTTP 404 | {"detail":"해당 작업이 없습니다."}
+
+[T-10] Worker 정지 후 접수
+  worker 프로세스: 0개
+  HTTP 202 | {"job_id":12,"status":"queued","check_url":"/api/async/jobs/12/"}
+  5초 후 상태:
+  HTTP 200 | {"job_id":12,"status":"queued","model_id":"artifacts/beans_resnet18","top1":null,"all":null,"inference_ms":null,"cache_hit":null,"error_message":null}
+  Redis 브로커 DB/2 대기 큐 길이: 1
+  → Worker 재실행
+  재실행 후 9초 시점:
+  HTTP 200 | {"job_id":12,"status":"done","model_id":"artifacts/beans_resnet18","top1":{"label":"bean_rust","score":0.4638148844242096},"all":[{"label":"bean_rust","score":0.4638148844242096},{"label":"angular_leaf_spot","score":0.3094010055065155},{"label":"healthy","score":0.22678400576114655}],"inference_ms":5554.82,"cache_hit":false,"error_message":null}
+
+[T-06] PostgreSQL image_jobs (최근 15행)
+ id | status |              image_path              |         model_id         |    top1_label     | top1_score | inference_ms | cache_hit | has_error |          created_at           |          updated_at           
+----+--------+--------------------------------------+--------------------------+-------------------+------------+--------------+-----------+-----------+-------------------------------+-------------------------------
+ 12 | done   | 19b40c0038594723a7cfabac03829108.bin | artifacts/beans_resnet18 | bean_rust         |     0.4638 |      5554.82 | f         | f         | 2026-11-04 02:09:15.990422+00 | 2026-11-04 02:09:29.084697+00
+ 11 | done   | d6c43239d1c441b09361af0223b3c69e.bin | artifacts/beans_resnet18 | healthy           |     0.8984 |              | t         | f         | 2026-11-04 02:09:10.58202+00  | 2026-11-04 02:09:10.591278+00
+ 10 | done   | 1eaaa2c524c847b7ba291ae91622921e.bin | artifacts/beans_resnet18 | bean_rust         |     0.5911 |              | t         | f         | 2026-11-04 02:08:43.364805+00 | 2026-11-04 02:08:43.372636+00
+  9 | done   | 79c8226b02e448b9a14be1bae13b1189.bin | artifacts/beans_resnet18 | angular_leaf_spot |     0.5796 |              | t         | f         | 2026-11-04 02:08:43.245681+00 | 2026-11-04 02:08:43.253515+00
+  8 | done   | ac0938ed04844933be0968b792ede533.bin | artifacts/beans_resnet18 | bean_rust         |     0.5000 |              | t         | f         | 2026-11-04 02:08:43.125932+00 | 2026-11-04 02:08:43.134364+00
+  7 | done   | 74174b304d7d4ac79e24d27511f7e721.bin | artifacts/beans_resnet18 | angular_leaf_spot |     0.3825 |              | t         | f         | 2026-11-04 02:08:43.007366+00 | 2026-11-04 02:08:43.015604+00
+  6 | done   | 7cdfac0e9d0343cea8caf07e3a62e3b1.bin | artifacts/beans_resnet18 | angular_leaf_spot |     0.5146 |              | t         | f         | 2026-11-04 02:08:42.894014+00 | 2026-11-04 02:08:42.902714+00
+  5 | done   | 28a40727e2684d84ae043951a117dd40.bin | artifacts/beans_resnet18 | bean_rust         |     0.5911 |        21.56 | f         | f         | 2026-11-04 02:08:42.775827+00 | 2026-11-04 02:08:42.808948+00
+  4 | done   | 1750b5d8d8db48648d4f446c18ba40e9.bin | artifacts/beans_resnet18 | angular_leaf_spot |     0.5796 |        24.39 | f         | f         | 2026-11-04 02:08:42.658239+00 | 2026-11-04 02:08:42.694251+00
+  3 | done   | a5666f1ae7f3469a9490bf3e2996c596.bin | artifacts/beans_resnet18 | bean_rust         |     0.5000 |        19.59 | f         | f         | 2026-11-04 02:08:42.543429+00 | 2026-11-04 02:08:42.574658+00
+  2 | done   | ef9ac4adee3c4767985d2b04f06d5583.bin | artifacts/beans_resnet18 | angular_leaf_spot |     0.3825 |        17.82 | f         | f         | 2026-11-04 02:08:42.429897+00 | 2026-11-04 02:08:42.458958+00
+  1 | done   | c070a610d5e041ffb69c02e13b438d54.bin | artifacts/beans_resnet18 | angular_leaf_spot |     0.5146 |      5596.06 | f         | f         | 2026-11-04 02:08:36.678186+00 | 2026-11-04 02:08:42.379023+00
+(12 rows)
+
+[상태별 건수]
+ status | count 
+--------+-------
+ done   |    12
+(1 row)
+
+[테이블 정의]
+                                        Table "public.image_jobs"
+    Column     |           Type           | Collation | Nullable |                Default                 
+---------------+--------------------------+-----------+----------+----------------------------------------
+ id            | integer                  |           | not null | nextval('image_jobs_id_seq'::regclass)
+ image_path    | character varying(150)   |           | not null | 
+ status        | character varying(20)    |           | not null | 
+ model_id      | character varying(255)   |           | not null | 
+ top1_label    | character varying(200)   |           |          | 
+ top1_score    | double precision         |           |          | 
+ all_scores    | json                     |           |          | 
+ inference_ms  | double precision         |           |          | 
+ cache_hit     | boolean                  |           |          | 
+ error_message | text                     |           |          | 
+ created_at    | timestamp with time zone |           | not null | 
+ updated_at    | timestamp with time zone |           | not null | 
+Indexes:
+    "image_jobs_pkey" PRIMARY KEY, btree (id)
+    "ix_image_jobs_status" btree (status)
+
+[media/jobs 저장 파일 수] 12

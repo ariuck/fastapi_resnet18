@@ -1,0 +1,8 @@
+$ python -m training.finetune --data dataset_clahe --output artifacts/exp/E5_full3_clahe --epochs 3 --batch-size 8 --lr 0.00005
+# started: 2026-11-05 09:24:55 KST
+클래스: ['angular_leaf_spot', 'bean_rust', 'healthy'] / Train: 1034, Val: 133
+{'epoch': 1, 'loss': 0.4555, 'val_accuracy': 0.9699}
+{'epoch': 2, 'loss': 0.1545, 'val_accuracy': 0.9549}
+{'epoch': 3, 'loss': 0.0852, 'val_accuracy': 0.9398}
+저장 완료: artifacts/exp/E5_full3_clahe / best val accuracy=0.9699
+# elapsed: 46.45 s

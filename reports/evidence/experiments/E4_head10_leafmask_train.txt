@@ -1,0 +1,15 @@
+$ python -m training.finetune --data dataset_leafmask --output artifacts/exp/E4_head10_leafmask --epochs 10 --batch-size 8 --freeze-backbone
+# started: 2026-11-05 09:22:53 KST
+클래스: ['angular_leaf_spot', 'bean_rust', 'healthy'] / Train: 1034, Val: 133
+{'epoch': 1, 'loss': 0.9791, 'val_accuracy': 0.7895}
+{'epoch': 2, 'loss': 0.7991, 'val_accuracy': 0.8271}
+{'epoch': 3, 'loss': 0.6955, 'val_accuracy': 0.8722}
+{'epoch': 4, 'loss': 0.6227, 'val_accuracy': 0.9023}
+{'epoch': 5, 'loss': 0.5781, 'val_accuracy': 0.9098}
+{'epoch': 6, 'loss': 0.5372, 'val_accuracy': 0.9323}
+{'epoch': 7, 'loss': 0.5338, 'val_accuracy': 0.9323}
+{'epoch': 8, 'loss': 0.4871, 'val_accuracy': 0.9398}
+{'epoch': 9, 'loss': 0.4916, 'val_accuracy': 0.9323}
+{'epoch': 10, 'loss': 0.4905, 'val_accuracy': 0.9173}
+저장 완료: artifacts/exp/E4_head10_leafmask / best val accuracy=0.9398
+# elapsed: 114.45 s

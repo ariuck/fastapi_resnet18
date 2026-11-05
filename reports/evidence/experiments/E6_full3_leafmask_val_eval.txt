@@ -1,0 +1,6 @@
+[E6_full3_leafmask] artifacts/exp/E6_full3_leafmask on dataset_leafmask/val: 127/133 = 0.9549
+  정답/예측                 angular_le   bean_rust     healthy   class_acc
+  angular_leaf_spot             42           2           0   0.9545
+  bean_rust                      1          43           1   0.9556
+  healthy                        1           1          42   0.9545
+  오답 6건 margin 중앙값: 0.2211 / 정답 margin 중앙값: 0.9925

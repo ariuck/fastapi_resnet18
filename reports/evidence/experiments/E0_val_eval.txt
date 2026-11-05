@@ -1,0 +1,6 @@
+[E0] artifacts/beans_resnet18 on dataset/val: 102/133 = 0.7669
+  정답/예측                 angular_le   bean_rust     healthy   class_acc
+  angular_leaf_spot             33           8           3   0.7500
+  bean_rust                      8          29           8   0.6444
+  healthy                        1           3          40   0.9091
+  오답 31건 margin 중앙값: 0.1744 / 정답 margin 중앙값: 0.2991

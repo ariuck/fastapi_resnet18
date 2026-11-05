@@ -1,0 +1,3 @@
+# [추가] 정확도 개선 실험 전용 패키지 — 서비스(제공 코드) 실행에는 필요 없음
+opencv-python-headless>=4.9,<5
+scikit-learn>=1.4,<2

@@ -1,0 +1,15 @@
+time,exp,model,data,split,accuracy,correct,total,acc_angular_leaf_spot,acc_bean_rust,acc_healthy,confusion(row=정답),training_report_best_val,note
+2026-11-05 09:17:48,E0,artifacts/beans_resnet18,dataset,val,0.7669,102,133,0.75,0.6444,0.9091,"[[33, 8, 3], [8, 29, 8], [1, 3, 40]]",0.7669172932330827,기준선 Head-only 3ep lr2e-4 원본
+2026-11-05 09:19:20,E1_head10,artifacts/exp/E1_head10,dataset,val,0.8947,119,133,0.8864,0.8667,0.9318,"[[39, 4, 1], [5, 39, 1], [0, 3, 41]]",0.8947368421052632,Head-only 10ep lr2e-4 원본
+2026-11-05 09:19:58,E2_full3,artifacts/exp/E2_full3,dataset,val,0.9699,129,133,0.9545,0.9778,0.9773,"[[42, 1, 1], [0, 44, 1], [0, 1, 43]]",0.9699248120300752,Full 3ep lr5e-5 원본
+2026-11-05 09:22:53,E3_head10_clahe,artifacts/exp/E3_head10_clahe,dataset_clahe,val,0.8872,118,133,0.9318,0.8444,0.8864,"[[41, 2, 1], [6, 38, 1], [1, 4, 39]]",0.8872180451127819,Head-only 10ep CLAHE(2일차)
+2026-11-05 09:24:55,E4_head10_leafmask,artifacts/exp/E4_head10_leafmask,dataset_leafmask,val,0.9398,125,133,0.9545,0.9111,0.9545,"[[42, 1, 1], [3, 41, 1], [0, 2, 42]]",0.9398496240601504,Head-only 10ep 잎마스크(2·3일차)
+2026-11-05 09:25:49,E5_full3_clahe,artifacts/exp/E5_full3_clahe,dataset_clahe,val,0.9699,129,133,0.9773,1.0,0.9318,"[[43, 1, 0], [0, 45, 0], [1, 2, 41]]",0.9699248120300752,Full 3ep lr5e-5 CLAHE
+2026-11-05 09:26:36,E6_full3_leafmask,artifacts/exp/E6_full3_leafmask,dataset_leafmask,val,0.9549,127,133,0.9545,0.9556,0.9545,"[[42, 2, 0], [1, 43, 1], [1, 1, 42]]",0.9548872180451128,Full 3ep lr5e-5 잎마스크
+2026-11-05 09:28:02,E7_full3_aug,artifacts/exp/E7_full3_aug,dataset_aug,val,0.985,131,133,0.9773,0.9778,1.0,"[[43, 1, 0], [0, 44, 1], [0, 0, 44]]",0.9849624060150376,Full 3ep lr5e-5 증강×3(8일차)
+2026-11-05 09:31:51,E8_head10_aug,artifacts/exp/E8_head10_aug,dataset_aug,val,0.9323,124,133,0.8636,1.0,0.9318,"[[38, 5, 1], [0, 45, 0], [0, 3, 41]]",0.9323308270676691,Head-only 10ep 증강×3(8일차)
+2026-11-05 09:33:50,E7_full3_aug_r2,artifacts/exp/E7_full3_aug_r2,dataset_aug,val,0.985,131,133,0.9773,0.9778,1.0,"[[43, 1, 0], [0, 44, 1], [0, 0, 44]]",0.9849624060150376,E7 재현성 확인 2회차
+2026-11-05 09:33:58,R1_opencv_logreg,Pipeline,dataset(OpenCV 특징 11개),val,0.6617,88,133,0.5,0.6222,0.8636,"[[22, 14, 8], [14, 28, 3], [1, 5, 38]]",,"CNN 미사용, 교과9 HSV·Contour 특징 + 로지스틱회귀"
+2026-11-05 09:33:59,R2_opencv_rf,RandomForestClassifier,dataset(OpenCV 특징 11개),val,0.7744,103,133,0.6591,0.8,0.8636,"[[29, 7, 8], [7, 36, 2], [1, 5, 38]]",,"CNN 미사용, 교과9 HSV·Contour 특징 + 랜덤포레스트"
+2026-11-05 09:34:43,E7_full3_aug,artifacts/exp/E7_full3_aug,dataset,test,0.9766,125,128,0.9767,0.9535,1.0,"[[42, 1, 0], [2, 41, 0], [0, 0, 42]]",0.9849624060150376,최종 선택 Full+증강 (Test 1회)
+2026-11-05 09:34:51,E0,artifacts/beans_resnet18,dataset,test,0.7188,92,128,0.6977,0.5349,0.9286,"[[30, 7, 6], [13, 23, 7], [0, 3, 39]]",0.7669172932330827,기준선 참고 (Test 1회)

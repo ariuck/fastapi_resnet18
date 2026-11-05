@@ -1,0 +1,6 @@
+[E7_full3_aug_r2] artifacts/exp/E7_full3_aug_r2 on dataset_aug/val: 131/133 = 0.9850
+  정답/예측                 angular_le   bean_rust     healthy   class_acc
+  angular_leaf_spot             43           1           0   0.9773
+  bean_rust                      0          44           1   0.9778
+  healthy                        0           0          44   1.0000
+  오답 2건 margin 중앙값: 0.7472 / 정답 margin 중앙값: 0.9962

@@ -1,0 +1,61 @@
+# Redis 장애 테스트 (2026-11-04 12:52:53 KST)
+
+[R-00] 장애 전 Redis: PONG / image_jobs 최대 id: 14
+[R-00] docker compose stop redis
+   Container fastapi_resnet18-redis-1 Stopping 
+   Container fastapi_resnet18-redis-1 Stopped 
+postgres Up 2 hours (healthy)
+
+[R-01] 동기 분류 (Redis 중지): dataset/test/healthy/healthy_test.40.jpg
+  HTTP 200 / total 0.182194s
+  {"model_id":"artifacts/beans_resnet18","top1":{"label":"bean_rust","score":0.41849181056022644},"all":[{"label":"bean_rust","score":0.41849181056022644},{"label":"healthy","score":0.3779617249965668},{"label":"angular_leaf_spot","score":0.2035464346408844}],"inference_ms":118.25,"cache_hit":false}
+
+[R-02] 비동기 접수 (Redis 브로커 중지): dataset/test/angular_leaf_spot/angular_leaf_spot_test.40.jpg
+  HTTP 503 / total 0.680134s
+  {"detail":"작업 큐 등록 실패: Redis 연결을 확인하세요."}
+[R-03] 방금 생성된 작업 조회 GET /api/async/jobs/15/
+  {"job_id":15,"status":"failed","model_id":"artifacts/beans_resnet18","top1":null,"all":null,"inference_ms":null,"cache_hit":null,"error_message":"작업 큐 등록 실패: Redis 연결을 확인하세요."}
+    HTTP 200
+
+[R-04] FastAPI 로그 (장애 구간 경고)
+  Redis 조회 불가; 모델 추론으로 전환: Error 111 connecting to 127.0.0.1:6379. Connection refused.
+  Redis 캐시 저장 실패: Error 111 connecting to 127.0.0.1:6379. Connection refused.
+  INFO:     127.0.0.1:55938 - "POST /api/sync/classify/ HTTP/1.1" 200 OK
+  INFO:     127.0.0.1:55944 - "POST /api/async/classify/ HTTP/1.1" 503 Service Unavailable
+
+[R-05] docker compose start redis
+   Container fastapi_resnet18-redis-1 Starting 
+   Container fastapi_resnet18-redis-1 Started 
+  Redis ping: PONG (1s)
+  Worker 프로세스: 1개
+[R-06] Worker 로그 (장애·재연결)
+  [2026-11-04 12:52:53,996: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+    File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/retry.py", line 105, in call_with_retry
+      return conn.read_response(disconnect_on_error=False, push_request=True)
+    File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/connection.py", line 650, in read_response
+      raise ConnectionError(SERVER_CLOSED_CONNECTION_ERROR)
+  redis.exceptions.ConnectionError: Connection closed by server.
+    File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/connection.py", line 650, in read_response
+  ConnectionResetError: [Errno 104] Connection reset by peer
+      return conn.retry.call_with_retry(
+    File "/home/user1/fastapi_resnet18/.venv/lib/python3.11/site-packages/redis/retry.py", line 108, in call_with_retry
+
+[R-07] 복구 후 비동기 접수: dataset/test/healthy/healthy_test.41.jpg
+  HTTP 202
+  {"job_id":16,"status":"queued","check_url":"/api/async/jobs/16/"}
+  {"job_id":16,"status":"done","model_id":"artifacts/beans_resnet18","top1":{"label":"healthy","score":0.6068470478057861},"all":[{"label":"healthy","score":0.6068470478057861},{"label":"bean_rust","score":0.2072812020778656},{"label":"angular_leaf_spot","score":0.18587179481983185}],"inference_ms":76.91,"cache_hit":false,"error_message":null}
+
+[R-08] image_jobs 최근 3행
+ id | status |    top1_label     | inference_ms | cache_hit |                error_message                
+----+--------+-------------------+--------------+-----------+---------------------------------------------
+ 16 | done   | healthy           |        76.91 | f         | 
+ 15 | failed |                   |              |           | 작업 큐 등록 실패: Redis 연결을 확인하세요.
+ 14 | done   | angular_leaf_spot |        57.71 | f         | 
+(3 rows)
+
+ status | count 
+--------+-------
+ done   |    15
+ failed |     1
+(2 rows)
+

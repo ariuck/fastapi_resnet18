@@ -1,0 +1,6 @@
+[E8_head10_aug] artifacts/exp/E8_head10_aug on dataset_aug/val: 124/133 = 0.9323
+  정답/예측                 angular_le   bean_rust     healthy   class_acc
+  angular_leaf_spot             38           5           1   0.8636
+  bean_rust                      0          45           0   1.0000
+  healthy                        0           3          41   0.9318
+  오답 9건 margin 중앙값: 0.3849 / 정답 margin 중앙값: 0.8029

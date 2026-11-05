@@ -1,0 +1,159 @@
+INFO:     Started server process [26920]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:40434 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48042 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48048 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/sync/classify/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/sync/classify/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/sync/classify/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/sync/classify/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/sync/classify/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/sync/classify/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/sync/classify/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/sync/classify/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/sync/classify/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/sync/classify/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/sync/classify/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/async/classify/ HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/1/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/async/classify/ HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/2/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/2/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/async/classify/ HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/3/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/3/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/async/classify/ HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/4/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/4/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/async/classify/ HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/5/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/5/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/async/classify/ HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/6/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/6/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/async/classify/ HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/7/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/7/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/async/classify/ HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/8/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/8/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/async/classify/ HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/9/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/9/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "POST /api/async/classify/ HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/10/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44804 - "GET /api/async/jobs/10/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56112 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56118 - "GET /vision/sync/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56130 - "GET /vision/async/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56146 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56162 - "POST /api/sync/classify/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56164 - "POST /api/sync/classify/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56168 - "POST /api/async/classify/ HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:56174 - "GET /api/async/jobs/11/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56178 - "POST /api/sync/classify/ HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:38648 - "POST /api/async/classify/ HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:38650 - "POST /api/sync/classify/ HTTP/1.1" 413 Request Entity Too Large
+INFO:     127.0.0.1:38656 - "GET /api/async/jobs/999999/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:38662 - "POST /api/async/classify/ HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:38668 - "GET /api/async/jobs/12/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38684 - "GET /api/async/jobs/12/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38692 - "GET /api/async/jobs/12/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41660 - "GET /api/async/jobs/12/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41674 - "GET /api/async/jobs/12/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41690 - "GET /api/async/jobs/12/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41700 - "GET /api/async/jobs/12/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41714 - "GET /api/async/jobs/12/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41720 - "GET /api/async/jobs/12/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41722 - "GET /api/async/jobs/12/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41724 - "GET /api/async/jobs/12/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58338 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57666 - "GET /vision/sync/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57666 - "GET /static/style.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57666 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52828 - "GET /vision/sync/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52828 - "GET /static/style.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52828 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52820 - "POST /api/sync/classify/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54320 - "POST /api/sync/classify/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36080 - "GET /vision/async/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36080 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49012 - "GET /vision/async/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49016 - "POST /api/async/classify/ HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:49016 - "GET /api/async/jobs/13/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34882 - "POST /api/async/classify/ HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:34882 - "GET /api/async/jobs/14/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50806 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50806 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52782 - "GET /api/async/jobs/999999/ HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60710 - "POST /api/async/classify/ HTTP/1.1" 400 Bad Request
+Redis 조회 불가; 모델 추론으로 전환: Error 111 connecting to 127.0.0.1:6379. Connection refused.
+Redis 캐시 저장 실패: Error 111 connecting to 127.0.0.1:6379. Connection refused.
+INFO:     127.0.0.1:55938 - "POST /api/sync/classify/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55944 - "POST /api/async/classify/ HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:55956 - "GET /api/async/jobs/15/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55970 - "POST /api/async/classify/ HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:55976 - "GET /api/async/jobs/16/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55990 - "GET /api/async/jobs/16/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56004 - "GET /api/async/jobs/16/ HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [26920]

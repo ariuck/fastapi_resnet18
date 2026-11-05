@@ -1,0 +1,6 @@
+[E1_head10] artifacts/exp/E1_head10 on dataset/val: 119/133 = 0.8947
+  정답/예측                 angular_le   bean_rust     healthy   class_acc
+  angular_leaf_spot             39           4           1   0.8864
+  bean_rust                      5          39           1   0.8667
+  healthy                        0           3          41   0.9318
+  오답 14건 margin 중앙값: 0.3112 / 정답 margin 중앙값: 0.6081
