@@ -3,9 +3,9 @@
 예: python -m experiments.opencv_features
 
 교과 9 연결
-- 2일차 HSV / 3일차 Morphology·Contour : 잎 마스크(experiments.preprocess.leaf_mask) 안에서 병반 후보 영역 추출
-- 5일차 Calibration                      : 특징 정규화·분류 기준을 train 으로만 학습 (val·test 로 조정하지 않음)
-- 9일차 Hybrid 비교                      : 결과를 CNN 실험과 같은 val 133장 기준으로 experiments.csv 에 기록
+- HSV / Morphology·Contour : 잎 마스크(experiments.preprocess.leaf_mask) 안에서 병반 후보 영역 추출
+- Calibration                      : 특징 정규화·분류 기준을 train 으로만 학습 (val·test 로 조정하지 않음)
+- Hybrid 비교                      : 결과를 CNN 실험과 같은 val 133장 기준으로 experiments.csv 에 기록
 
 특징 (이미지 1장당 11개)
 - leaf_ratio                 잎 마스크 면적 / 이미지

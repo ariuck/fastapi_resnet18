@@ -30,18 +30,18 @@ python -m experiments.evaluate --exp E0 --model artifacts/beans_resnet18 --data 
 train E1_head10      dataset          "Head-only 10ep lr2e-4 원본"          --epochs 10 --batch-size 8 --freeze-backbone
 train E2_full3       dataset          "Full 3ep lr5e-5 원본"                 --epochs 3  --batch-size 8 --lr 0.00005
 
-# 2) 교과 9 OpenCV 전처리 (2·3일차)
+# 2) 교과 9 OpenCV 전처리
 [ -d dataset_clahe ]    || python -m experiments.preprocess --method clahe    --src dataset --dst dataset_clahe
 [ -d dataset_leafmask ] || python -m experiments.preprocess --method leafmask --src dataset --dst dataset_leafmask
-train E3_head10_clahe    dataset_clahe    "Head-only 10ep CLAHE(2일차)"        --epochs 10 --batch-size 8 --freeze-backbone
-train E4_head10_leafmask dataset_leafmask "Head-only 10ep 잎마스크(2·3일차)"   --epochs 10 --batch-size 8 --freeze-backbone
+train E3_head10_clahe    dataset_clahe    "Head-only 10ep CLAHE"        --epochs 10 --batch-size 8 --freeze-backbone
+train E4_head10_leafmask dataset_leafmask "Head-only 10ep 잎마스크"   --epochs 10 --batch-size 8 --freeze-backbone
 train E5_full3_clahe     dataset_clahe    "Full 3ep lr5e-5 CLAHE"              --epochs 3  --batch-size 8 --lr 0.00005
 train E6_full3_leafmask  dataset_leafmask "Full 3ep lr5e-5 잎마스크"           --epochs 3  --batch-size 8 --lr 0.00005
 
-# 3) 데이터 증강 (8일차)
+# 3) 데이터 증강
 [ -d dataset_aug ] || python -m experiments.augment --src dataset --dst dataset_aug --copies 2
-train E7_full3_aug       dataset_aug      "Full 3ep lr5e-5 증강×3(8일차)"      --epochs 3  --batch-size 8 --lr 0.00005
-train E8_head10_aug      dataset_aug      "Head-only 10ep 증강×3(8일차)"       --epochs 10 --batch-size 8 --freeze-backbone
+train E7_full3_aug       dataset_aug      "Full 3ep lr5e-5 증강×3"      --epochs 3  --batch-size 8 --lr 0.00005
+train E8_head10_aug      dataset_aug      "Head-only 10ep 증강×3"       --epochs 10 --batch-size 8 --freeze-backbone
 
 echo; echo "===== 실험 기록 (val) ====="
 column -s, -t < reports/data/experiments.csv | cut -c1-200

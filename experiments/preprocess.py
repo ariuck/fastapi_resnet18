@@ -4,8 +4,8 @@
     python -m experiments.preprocess --method leafmask --src dataset --dst dataset_leafmask
 
 method
-- clahe    (2일차 Image Enhancement): BGR → LAB, L 채널에만 CLAHE(clipLimit 2.0, 8×8) → BGR
-- leafmask (2일차 HSV + 3일차 Morphology·Contour): HSV 잎 색 범위 inRange → Opening/Closing
+- clahe    (Image Enhancement): BGR → LAB, L 채널에만 CLAHE(clipLimit 2.0, 8×8) → BGR
+- leafmask (HSV + Morphology·Contour): HSV 잎 색 범위 inRange → Opening/Closing
            → 면적 2% 이상 Contour만 채워서 마스크 → 마스크 밖(흙·배경)을 검정으로
            마스크가 이미지의 15% 미만이면 '마스크 실패'로 보고 원본 유지(기록)
 

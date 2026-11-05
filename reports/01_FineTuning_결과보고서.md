@@ -183,7 +183,7 @@ python -m training.finetune --data dataset --output artifacts/beans_resnet18 --e
 | 비교 조건 | 모든 실험을 **같은 Validation 133장**으로 비교 (전처리 실험은 같은 133장에 같은 전처리 적용) |
 | 모델 선택 | **Validation으로만** 선택. Test 128장은 최종 모델 확정 후 **1회만** 평가 |
 | 추가 코드 | `experiments/` (전처리·증강·평가·특징 분류·규칙 분석) — 제공 코드와 분리, 실험 전용 패키지는 `experiments/requirements-exp.txt` |
-| 실험 기록 (교과 9 · 9일차 실험관리) | 실험 1건 = `reports/data/experiments.csv` 1줄, 이미지별 예측 `reports/data/preds/`, 로그 `reports/evidence/experiments/` |
+| 실험 기록 (교과 9 · 실험관리) | 실험 1건 = `reports/data/experiments.csv` 1줄, 이미지별 예측 `reports/data/preds/`, 로그 `reports/evidence/experiments/` |
 | 실행 | `bash experiments/run_all.sh` → `run_followup.sh` → `run_final_test.sh` |
 
 ### 7-2. 실험 구성
@@ -192,14 +192,14 @@ python -m training.finetune --data dataset --output artifacts/beans_resnet18 --e
 |---|---|---|---|
 | E0 | 원본 | Head-only | 3 epoch, lr 2e-4 (기준선) |
 | E1 | 원본 | Head-only | **10 epoch** |
-| E3 | **CLAHE** — LAB의 L 채널 대비 보정 (2일차 Image Enhancement) | Head-only | 10 epoch |
-| E4 | **잎 마스크** — HSV inRange → Opening/Closing → Contour 채우기 → 배경 제거 (2일차 HSV, 3일차 Morphology·Contour) | Head-only | 10 epoch |
-| E8 | **데이터 증강 ×3** — 반전·90° 회전·밝기/대비 ±20%, train에만 (8일차 데이터 생성) | Head-only | 10 epoch |
+| E3 | **CLAHE** — LAB의 L 채널 대비 보정 (Image Enhancement) | Head-only | 10 epoch |
+| E4 | **잎 마스크** — HSV inRange → Opening/Closing → Contour 채우기 → 배경 제거 (HSV, Morphology·Contour) | Head-only | 10 epoch |
+| E8 | **데이터 증강 ×3** — 반전·90° 회전·밝기/대비 ±20%, train에만 (데이터 생성) | Head-only | 10 epoch |
 | E2 | 원본 | **Full Fine-tuning** (`--freeze-backbone` 없음) | 3 epoch, **lr 5e-5** |
 | E5 | CLAHE | Full | 3 epoch, lr 5e-5 |
 | E6 | 잎 마스크 | Full | 3 epoch, lr 5e-5 |
 | E7 | 데이터 증강 ×3 | Full | 3 epoch, lr 5e-5 |
-| R1 / R2 | 원본에서 **OpenCV 특징 11개** 추출 (잎 면적비, 갈색·황색 비율, 반점 개수·크기, 잎 HSV 평균·표준편차) — CNN 미사용 (3·5·9일차) | 로지스틱회귀 / 랜덤포레스트 | train으로 학습 |
+| R1 / R2 | 원본에서 **OpenCV 특징 11개** 추출 (잎 면적비, 갈색·황색 비율, 반점 개수·크기, 잎 HSV 평균·표준편차) — CNN 미사용 | 로지스틱회귀 / 랜덤포레스트 | train으로 학습 |
 
 ### 7-3. 잎 마스크 조정 과정 (v1 → v2)
 
@@ -237,9 +237,9 @@ python -m training.finetune --data dataset --output artifacts/beans_resnet18 --e
 |---|---|---|
 | 학습량 3 → 10 epoch | E0 → E1: **+12.8%p** (+17장) | — |
 | Head-only → Full | E1 → E2: **+7.5%p** (+10장) | — |
-| CLAHE (2일차) | E3: −0.8%p (−1장) → **효과 없음** | E5: ±0 → **효과 없음** |
-| 잎 마스크 (2·3일차) | E4: **+4.5%p** (+6장) → **효과 있음** | E6: −1.5%p (−2장) → 효과 없음·소폭 하락 |
-| 데이터 증강 (8일차) | E8: **+3.8%p** (+5장), bean_rust 1.0 | E7: **+1.5%p** (+2장) → **최고** |
+| CLAHE | E3: −0.8%p (−1장) → **효과 없음** | E5: ±0 → **효과 없음** |
+| 잎 마스크 | E4: **+4.5%p** (+6장) → **효과 있음** | E6: −1.5%p (−2장) → 효과 없음·소폭 하락 |
+| 데이터 증강 | E8: **+3.8%p** (+5장), bean_rust 1.0 | E7: **+1.5%p** (+2장) → **최고** |
 
 - **반복 실행 편차:** seed 42로 고정해도 GPU 연산 비결정성 때문에 결과가 조금 달라질 수 있다. E2 설정은 다른 회차 실행에서 0.9774(130장)였다. 따라서 **1~2장(0.75~1.5%p) 차이는 우연일 수 있다.** E7은 2회 모두 0.9850, 혼동행렬도 같았다.
 
@@ -250,7 +250,7 @@ python -m training.finetune --data dataset --output artifacts/beans_resnet18 --e
 4. **데이터 증강은 두 방식 모두에서 개선됐다.** 회전·반전·밝기 변화에도 병명이 바뀌지 않는다는 점을 학습해 일반화가 좋아졌다.
 5. **OpenCV 특징만으로도(R2) 기준선 CNN과 비슷한 0.77**이 나왔다. 중요도가 높은 특징은 잎 면적비, 잎 색상 평균(H), 황색 비율 순이었다. train 평균에서 angular_leaf_spot은 황색 비율 0.172, 반점 수 93개로 healthy(0.048, 54개)보다 높았다. 규칙 기반 특징에 질병 정보가 담겨 있음을 확인했지만, 학습한 CNN보다는 낮다.
 
-### 7-6. CNN + 규칙 보류 (5일차 복합 Rule) — val
+### 7-6. CNN + 규칙 보류 (복합 Rule) — val
 
 규칙: 1·2위 확률 차(margin)가 임계값 미만이면 자동 판정하지 않고 "확인 필요"로 보류한다(라벨은 바꾸지 않음).
 

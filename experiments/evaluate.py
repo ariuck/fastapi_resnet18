@@ -1,4 +1,4 @@
-"""[추가 실험 코드 · 제공 코드 아님] 학습된 모델을 지정 split으로 평가하고 실험 기록에 한 줄 추가한다. (교과 9 · 9일차 실험관리)
+"""[추가 실험 코드 · 제공 코드 아님] 학습된 모델을 지정 split으로 평가하고 실험 기록에 한 줄 추가한다. (교과 9 · 실험관리)
 
 예: python -m experiments.evaluate --exp E0 --model artifacts/beans_resnet18 --data dataset --split val --note "Head-only 3ep"
 

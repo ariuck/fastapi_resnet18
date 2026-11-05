@@ -1,4 +1,4 @@
-"""[추가 실험 코드 · 제공 코드 아님] CNN + 규칙 기반 '확인 필요(보류)' 분석. (교과 9 · 5일차 복합 Rule·실패 분석)
+"""[추가 실험 코드 · 제공 코드 아님] CNN + 규칙 기반 '확인 필요(보류)' 분석. (교과 9 · 복합 Rule·실패 분석)
 
 예: python -m experiments.review_rule --preds reports/data/preds/E0_val.csv
 
