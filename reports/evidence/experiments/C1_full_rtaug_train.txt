@@ -1,0 +1,15 @@
+$ python -m training.finetune --data dataset --output artifacts/exp/C1_full_rtaug --epochs 10 --batch-size 8 --lr 0.00005 --augment --patience 3
+# started: 2026-11-05 14:52:32 KST
+클래스: ['angular_leaf_spot', 'bean_rust', 'healthy'] / Train: 1034, Val: 133
+{'epoch': 1, 'loss': 0.491, 'val_accuracy': 0.9398}
+{'epoch': 2, 'loss': 0.2726, 'val_accuracy': 0.9699}
+{'epoch': 3, 'loss': 0.2065, 'val_accuracy': 0.9624}
+{'epoch': 4, 'loss': 0.1504, 'val_accuracy': 0.9774}
+{'epoch': 5, 'loss': 0.1239, 'val_accuracy': 0.985}
+{'epoch': 6, 'loss': 0.1121, 'val_accuracy': 0.9925}
+{'epoch': 7, 'loss': 0.1461, 'val_accuracy': 0.9925}
+{'epoch': 8, 'loss': 0.1091, 'val_accuracy': 0.9925}
+{'epoch': 9, 'loss': 0.1345, 'val_accuracy': 1.0}
+{'epoch': 10, 'loss': 0.0836, 'val_accuracy': 0.9925}
+저장 완료: artifacts/exp/C1_full_rtaug / best val accuracy=1.0000
+# elapsed: 108.70 s

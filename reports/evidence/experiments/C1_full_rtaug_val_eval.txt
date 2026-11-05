@@ -1,0 +1,6 @@
+[C1_full_rtaug] artifacts/exp/C1_full_rtaug on dataset/val: 133/133 = 1.0000
+  정답/예측                 angular_le   bean_rust     healthy   class_acc
+  angular_leaf_spot             44           0           0   1.0000
+  bean_rust                      0          45           0   1.0000
+  healthy                        0           0          44   1.0000
+  오답 0건 margin 중앙값: - / 정답 margin 중앙값: 0.9965

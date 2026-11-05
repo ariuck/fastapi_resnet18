@@ -111,11 +111,27 @@ python -m tools.measure_api --repeat 5    # 실서버 성능 측정 → reports/
 uv pip install -r experiments/requirements-exp.txt   # OpenCV, scikit-learn (실험 전용)
 bash experiments/run_all.sh        # 전처리(CLAHE·잎 마스크)·증강 데이터 생성 + 실험 E1~E8 학습·val 평가
 bash experiments/run_followup.sh   # 재현성(E7 2회차), OpenCV 특징 분류(R1·R2), 규칙 보류 분석
-bash experiments/run_final_test.sh # 최종 모델(E7)·기준선(E0) Test 1회 평가
+bash experiments/run_final_test.sh # 코드 수정 전 최종 모델(E7)·기준선(E0) Test 1회 평가
+bash experiments/run_codemod.sh      # 학습 코드 수정 후 Full Fine-tuning C1·C2 학습·val 평가
+bash experiments/run_codemod_test.sh # 최종 모델(C2) Test 평가 (Test 재사용 2회차)
 ```
 
-- 제공 `training/finetune.py`는 수정하지 않고 `--data`와 옵션만 바꾼다. 결과 모델은 `artifacts/exp/`, 기록은 `reports/data/experiments.csv`.
-- 최종 선택 E7(Full Fine-tuning + 증강): val 0.9850 / Test 0.9766. 서비스에 적용하려면 `.env`의 `MODEL_PATH=artifacts/exp/E7_full3_aug`로 바꾸고 FastAPI·Worker를 재시작한다 (평가 제출본은 E0 유지).
+- E1~E8은 `--data`와 옵션만 바꾼 실험이다. 결과 모델은 `artifacts/exp/`, 기록은 `reports/data/experiments.csv`.
+- `training/finetune.py`는 **학습 코드를 수정**해 옵션 3개를 추가했다 (기본값은 모두 '사용 안 함'이라 4장 명령과 E1~E8은 그대로 동작).
+
+| 옵션 | 기능 |
+|---|---|
+| `--augment` | 학습 중 랜덤 증강 (매 에포크 다른 반전·90° 회전·밝기/대비 ±20%, 색상은 유지) |
+| `--scheduler cosine` | 학습률을 배치마다 코사인 곡선으로 0까지 감소 |
+| `--patience N` | 검증 정확도가 N 에포크 연속 오르지 않으면 조기 종료 |
+
+```bash
+python -m training.finetune --data dataset --output artifacts/exp/C2_full_rtaug_cos \
+  --epochs 10 --batch-size 8 --lr 0.00005 --augment --scheduler cosine --patience 3
+```
+
+- 최종 선택 **C2(학습 코드 수정 후 Full Fine-tuning)**: val 1.0000 / Test **0.9844**. 코드 수정 전 최종 E7(Full + 미리 만든 증강): val 0.9850 / Test 0.9766.
+- 서비스에 적용하려면 `.env`의 `MODEL_PATH=artifacts/exp/C2_full_rtaug_cos`로 바꾸고 FastAPI·Worker를 재시작한다 (평가 제출본 서비스는 E0 유지).
 - GPU 연산 비결정성 때문에 재실행 시 1~2장 차이가 날 수 있다.
 
 ## 8. 결과물 위치
@@ -141,4 +157,4 @@ docker compose stop        # 볼륨(데이터) 보존
 - `.env`, 비밀번호, API 키는 GitHub에 올리지 않는다 (`.gitignore`에 포함).
 - `compose.yaml`의 DB 계정(`vision_user`/`vision_pass`)은 로컬 교육용 값이며 외부 공개 서버에 사용하지 않는다.
 - `dataset/`, `artifacts/`, `media/jobs/`는 `.gitignore` 대상이다. 데이터셋은 위 3장 절차로 다시 받는다.
-- 학습 가중치는 제출물 파일로 별도 전달한다: `artifacts/beans_resnet18/`(E0, 서비스 모델), `artifacts/exp/E7_full3_aug/`(E7, 정확도 개선 최종 모델). 4장 명령으로 다시 만들 수도 있다(GPU 비결정성으로 1~2장 차이 가능).
+- 학습 가중치는 제출물 파일로 별도 전달한다: `artifacts/beans_resnet18/`(E0, 서비스 모델), `artifacts/exp/C2_full_rtaug_cos/`(C2, 학습 코드 수정 후 최종 모델), `artifacts/exp/E7_full3_aug/`(E7, 코드 수정 전 최종 모델). 4장·7-1장 명령으로 다시 만들 수도 있다(GPU 비결정성으로 1~2장 차이 가능).

@@ -1,0 +1,6 @@
+[C2_full_rtaug_cos] artifacts/exp/C2_full_rtaug_cos on dataset/test: 126/128 = 0.9844
+  정답/예측                 angular_le   bean_rust     healthy   class_acc
+  angular_leaf_spot             43           0           0   1.0000
+  bean_rust                      1          42           0   0.9767
+  healthy                        0           1          41   0.9762
+  오답 2건 margin 중앙값: 0.9211 / 정답 margin 중앙값: 0.9953

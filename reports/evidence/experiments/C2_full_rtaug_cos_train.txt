@@ -1,0 +1,16 @@
+$ python -m training.finetune --data dataset --output artifacts/exp/C2_full_rtaug_cos --epochs 10 --batch-size 8 --lr 0.00005 --augment --scheduler cosine --patience 3
+# started: 2026-11-05 14:54:25 KST
+클래스: ['angular_leaf_spot', 'bean_rust', 'healthy'] / Train: 1034, Val: 133
+{'epoch': 1, 'loss': 0.4915, 'val_accuracy': 0.9398, 'lr_end': 4.88e-05}
+{'epoch': 2, 'loss': 0.2711, 'val_accuracy': 0.9699, 'lr_end': 4.52e-05}
+{'epoch': 3, 'loss': 0.2024, 'val_accuracy': 0.9624, 'lr_end': 3.97e-05}
+{'epoch': 4, 'loss': 0.1471, 'val_accuracy': 0.985, 'lr_end': 3.27e-05}
+{'epoch': 5, 'loss': 0.1173, 'val_accuracy': 0.9925, 'lr_end': 2.5e-05}
+{'epoch': 6, 'loss': 0.0997, 'val_accuracy': 0.9925, 'lr_end': 1.73e-05}
+{'epoch': 7, 'loss': 0.1456, 'val_accuracy': 1.0, 'lr_end': 1.03e-05}
+{'epoch': 8, 'loss': 0.102, 'val_accuracy': 1.0, 'lr_end': 4.77e-06}
+{'epoch': 9, 'loss': 0.1177, 'val_accuracy': 1.0, 'lr_end': 1.22e-06}
+{'epoch': 10, 'loss': 0.1051, 'val_accuracy': 0.985, 'lr_end': 0.0}
+조기 종료: 3 에포크 연속 개선 없음 (epoch 10)
+저장 완료: artifacts/exp/C2_full_rtaug_cos / best val accuracy=1.0000
+# elapsed: 102.24 s

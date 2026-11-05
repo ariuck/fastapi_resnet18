@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# [추가 실험 코드] 정확도 개선 실험 일괄 실행. 제공 training/finetune.py 는 수정 없이 --data/--output/옵션만 바꾼다.
+# [추가 실험 코드] 정확도 개선 실험 일괄 실행. 이 스크립트의 실험(E0~E8)은 training/finetune.py 수정 전 옵션만 바꾼다.
+# (이후 학습 코드를 수정해 추가한 --augment/--scheduler/--patience 실험은 run_codemod.sh)
 # 모든 모델은 artifacts/exp/ 에 따로 저장 (서비스 모델 artifacts/beans_resnet18 은 건드리지 않음)
 # 평가는 val 133장으로만 한다. test 는 최종 모델 확정 후 별도로 1회.
 set -e

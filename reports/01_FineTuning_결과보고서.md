@@ -7,6 +7,7 @@
 - 보관 데이터: `dataset/test` (학습·모델 선택에 사용하지 않음)
 - 모델 저장 위치: `artifacts/beans_resnet18/`
 - 실험 상태: **실행 완료** (2026-11-04 10:28:41 ~ 10:29:16 KST, 34.98초)
+- 정확도 개선 최종 모델: **C2** — 학습 코드 수정(학습 중 랜덤 증강·코사인 학습률 스케줄러·조기 종료) 후 Full Fine-tuning, Validation 1.0000 / Test **0.9844** (7-9절)
 
 ---
 
@@ -178,13 +179,13 @@ python -m training.finetune --data dataset --output artifacts/beans_resnet18 --e
 
 | 규칙 | 적용 |
 |---|---|
-| 제공 코드 | `training/finetune.py` **수정 없음**. `--data`(전처리한 데이터 폴더)와 실행 옵션만 변경 |
+| 제공 코드 | E0~E8은 `training/finetune.py` **수정 없이** `--data`(전처리한 데이터 폴더)와 실행 옵션만 변경. 이후 **학습 코드를 수정**해 옵션 3개를 추가하고 C1·C2를 실험했다(7-9절). 추가 옵션의 기본값은 '사용 안 함'이라 E0~E8 명령은 수정 후에도 같은 방식으로 동작한다 |
 | 저장 위치 | `artifacts/exp/<실험명>/` — 기준선 `artifacts/beans_resnet18`과 서비스는 변경 없음 |
 | 비교 조건 | 모든 실험을 **같은 Validation 133장**으로 비교 (전처리 실험은 같은 133장에 같은 전처리 적용) |
-| 모델 선택 | **Validation으로만** 선택. Test 128장은 최종 모델 확정 후 **1회만** 평가 |
+| 모델 선택 | **Validation으로만** 선택. Test 128장은 최종 모델 확정 후 **1회만** 평가 (코드 수정 후 C2 평가는 **Test 재사용 2회차**로 따로 표시, 7-9절) |
 | 추가 코드 | `experiments/` (전처리·증강·평가·특징 분류·규칙 분석) — 제공 코드와 분리, 실험 전용 패키지는 `experiments/requirements-exp.txt` |
 | 실험 기록 (교과 9 · 실험관리) | 실험 1건 = `reports/data/experiments.csv` 1줄, 이미지별 예측 `reports/data/preds/`, 로그 `reports/evidence/experiments/` |
-| 실행 | `bash experiments/run_all.sh` → `run_followup.sh` → `run_final_test.sh` |
+| 실행 | `bash experiments/run_all.sh` → `run_followup.sh` → `run_final_test.sh` → (코드 수정 후) `run_codemod.sh` → `run_codemod_test.sh` |
 
 ### 7-2. 실험 구성
 
@@ -228,6 +229,8 @@ python -m training.finetune --data dataset --output artifacts/beans_resnet18 --e
 | E5 Full + CLAHE | 0.9699 | 129 | 0.9773 | 1.0000 | 0.9318 | 46.5 s |
 | **E7 Full + 증강** | **0.9850** | **131** | 0.9773 | 0.9778 | **1.0000** | 73.1 s |
 | E7 재현 (2회차) | 0.9850 | 131 | 0.9773 | 0.9778 | 1.0000 | 73.7 s |
+| C1 [코드 수정] Full + 학습 중 랜덤 증강 (최대 10ep) | 1.0000 | 133 | 1.0000 | 1.0000 | 1.0000 | 108.7 s |
+| **C2 [코드 수정] C1 + 코사인 스케줄러** | **1.0000** | **133** | 1.0000 | 1.0000 | 1.0000 | 102.2 s |
 
 ![실험 기록](evidence/exp_result.png)
 
@@ -264,10 +267,12 @@ python -m training.finetune --data dataset --output artifacts/beans_resnet18 --e
 | E7 | 0.1 ~ 0.3 | 0.8~1.5% (1~2장) | 0.9847 | 2 |
 
 - 약한 모델(E0)에서는 규칙으로 오답을 크게 줄일 수 있지만, **보류율이 너무 높아** 자동화 효과가 작다.
-- 최종 모델(E7)은 남은 오답 2장이 margin 0.56·0.77로 **확신 있게 틀린 경우**라 이 규칙으로 걸러지지 않는다.
+- 코드 수정 전 최종 모델(E7)은 남은 오답 2장이 margin 0.56·0.77로 **확신 있게 틀린 경우**라 이 규칙으로 걸러지지 않는다.
 - 임계값 후보는 미리 정한 값(0.1·0.2·0.3)만 비교했다. 운영 기준을 정하려면 별도 데이터로 다시 확인해야 한다.
 
-### 7-7. 최종 모델 선택과 Test 평가 (1회)
+### 7-7. 최종 모델 선택과 Test 평가 (1회) — 코드 수정 전
+
+> 이 절은 학습 코드를 수정하기 전의 최종 결과다. 코드 수정 후 최종 모델(C2)은 7-9절.
 
 - **선택:** E7 (Full Fine-tuning + 데이터 증강) — val 최고 0.9850, 2회 실행 재현
 - **장점:** 추론 시 **원본 이미지를 그대로 입력**한다(증강은 학습 데이터에만 적용). 따라서 서비스 코드 변경 없이 `MODEL_PATH`만 바꾸면 적용할 수 있다. 잎 마스크 모델(E4)은 서비스에도 같은 전처리 코드를 추가해야 한다.
@@ -292,6 +297,48 @@ python -m training.finetune --data dataset --output artifacts/beans_resnet18 --e
 ### 7-8. 서비스 반영 여부
 
 - **현재 서비스는 평가 지정 모델(E0, `artifacts/beans_resnet18`)을 유지**한다. 산출물 2~7의 측정·캡처는 모두 E0 기준이다.
-- E7을 서비스에 쓰려면 `.env`를 `MODEL_PATH=artifacts/exp/E7_full3_aug`로 바꾸고 FastAPI·Worker를 재시작한 뒤, 성능 측정(산출물 6)과 캡처를 다시 해야 한다. **미실시.**
+- 개선 모델(C2 또는 E7)을 서비스에 쓰려면 `.env`를 `MODEL_PATH=artifacts/exp/C2_full_rtaug_cos`로 바꾸고 FastAPI·Worker를 재시작한 뒤, 성능 측정(산출물 6)과 캡처를 다시 해야 한다. **미실시.**
+
+### 7-9. 학습 코드 수정 후 Full Fine-tuning 재실험 (최종)
+
+E7까지는 제공 학습 코드의 옵션만 바꿨다. 옵션으로는 할 수 없는 개선을 위해 **`training/finetune.py`를 수정**했다 (+62줄 / −6줄, `[수정]` 주석으로 표시).
+
+| 수정 내용 | 새 옵션 | 동작 | E7 방식과 차이 |
+|---|---|---|---|
+| 학습 중 랜덤 증강 | `--augment` | train 이미지를 불러올 때마다 좌우·상하 반전, 90° 회전, 밝기·대비 ±20%를 랜덤 적용 (색상 Hue는 변경 안 함, val·test는 원본) | E7은 미리 만든 증강 사진 2장(고정)을 씀 → 수정 후에는 **에포크마다 다른 변형**을 봄 |
+| 코사인 학습률 스케줄러 | `--scheduler cosine` | 학습률을 배치마다 5e-5 → 0으로 코사인 곡선을 따라 줄임 | E7은 학습률 고정 |
+| 조기 종료 | `--patience N` | 검증 정확도가 N 에포크 연속 오르지 않으면 학습 중단 (저장 모델은 최고 시점) | E7은 정해진 3 에포크 |
+| 학습 설정 기록 | — | `training_report.json`에 `options`, `stopped_epoch` 저장 | 재현용 |
+
+- 세 옵션의 기본값은 모두 '사용 안 함'이라, 옵션을 주지 않으면 수정 전과 같은 방식으로 학습한다.
+
+**실험 설정** (공통: 원본 `dataset`, Full Fine-tuning, lr 5e-5, batch 8, seed 42, 최대 10 에포크, `--patience 3`)
+
+| 실험 | 추가 옵션 | 에포크별 Validation | 최고 (저장 시점) |
+|---|---|---|---:|
+| C1 | `--augment` | 0.940 → 0.970 → 0.962 → 0.977 → 0.985 → 0.992 → 0.992 → 0.992 → **1.000** → 0.992 | 1.0000 (9) |
+| C2 | `--augment --scheduler cosine` | 0.940 → 0.970 → 0.962 → 0.985 → 0.992 → 0.992 → **1.000 → 1.000 → 1.000** → 0.985 | 1.0000 (7) |
+
+![코드 수정 후 학습 로그](evidence/codemod_train.png)
+
+- 고정 증강(E7)에서는 3 에포크 이후 개선 여지가 작았지만, **랜덤 증강은 매 에포크 새로운 변형을 보여 줘서 10 에포크까지 학습해도 과적합 없이 올라갔다.**
+- C2의 조기 종료는 마지막 10 에포크에서 걸려 실제로 학습 시간을 줄이지는 못했다. 저장 모델은 최고 시점(7 에포크)이다.
+- **최종 선택: C2** — C1·C2 모두 Validation 1.0000이지만, C2는 1.0을 **3 에포크 연속 유지**해 더 안정적이고(C1은 1회), 수정한 기능 3가지를 모두 사용한다. **Test를 보기 전에 Validation만으로 결정했고, C1은 Test에 넣지 않았다.**
+- Validation 1.0000은 133장에서 고른 최고값이라 실제보다 낙관적일 수 있다. 일반화 성능은 Test로 확인한다.
+
+**Test 평가 (재사용 2회차)**
+
+| 모델 | Test 정확도 | 정답 수 | angular_leaf_spot | bean_rust | healthy |
+|---|---:|---:|---:|---:|---:|
+| E0 기준선 (참고) | 0.7188 | 92 / 128 | 0.6977 | 0.5349 | 0.9286 |
+| E7 (코드 수정 전 최종) | 0.9766 | 125 / 128 | 0.9767 | 0.9535 | 1.0000 |
+| **C2 (코드 수정 후 최종)** | **0.9844** | **126 / 128** | **1.0000** | 0.9767 | 0.9762 |
+
+![코드 수정 후 Test 평가](evidence/codemod_test.png)
+
+- **Test 기준 E7 대비 +0.8%p (+1장), E0 대비 +26.6%p (+34장).**
+- C2 오답 2장: `bean_rust_test.15` → angular_leaf_spot (margin 0.92, E7도 틀린 사진), `healthy_test.35` → bean_rust (margin 0.12, 확신 낮음). E7의 오답 `angular_leaf_spot_test.14`, `bean_rust_test.31`은 C2에서 맞았다.
+- 시연 사진 `bean_rust_test.10`(bean_rust 0.99), `bean_rust_test.30`(0.96), `healthy_test.40`(healthy 0.91) 모두 정답.
+- **주의:** Test는 E7 평가에 이미 1회 사용했으므로 C2 평가는 **재사용(2회차)**이다. 모델 선택에는 Test를 쓰지 않았지만, 128장에서 1장 차이(0.8%p)는 우연일 수 있다. 따라서 "C2가 E7보다 확실히 낫다"가 아니라 **"코드 수정 후에도 같은 수준 이상(98.4%)을 유지했다"**로 판단한다.
 
 **증빙:** [`data/experiments.csv`](data/experiments.csv), [`data/preds/`](data/preds/), [`evidence/experiments/`](evidence/experiments/) (실험별 학습 로그·평가·`final_test_eval.txt`·`review_rule_val.txt`·`R_opencv_features.txt`)
