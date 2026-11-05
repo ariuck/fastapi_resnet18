@@ -1,4 +1,4 @@
-"""[추가 증빙 도구 · 제공 코드 아님] 헤드리스 브라우저(Playwright)로 증빙 화면을 자동 캡처한다.
+"""[추가 증빙 도구 · 제공 코드 아님] Playwright 브라우저로 증빙 화면을 캡처한다.
 
 전제: FastAPI(127.0.0.1:8000)·Redis·PostgreSQL 실행 중, LD_LIBRARY_PATH에 Chromium 의존 라이브러리 경로 지정
 예: python -m tools.capture_evidence
